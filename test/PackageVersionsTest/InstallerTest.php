@@ -312,6 +312,8 @@ final class Versions
      *
      * @psalm-suppress ImpureMethodCall we know that {@see InstalledVersions} interaction does not
      *                                  cause any side effects here.
+     *
+     * @psalm-return key-of<self::VERSIONS>
      */
     public static function rootPackageName() : string
     {
@@ -460,6 +462,8 @@ final class Versions
      *
      * @psalm-suppress ImpureMethodCall we know that {@see InstalledVersions} interaction does not
      *                                  cause any side effects here.
+     *
+     * @psalm-return key-of<self::VERSIONS>
      */
     public static function rootPackageName() : string
     {
@@ -612,6 +616,8 @@ final class Versions
      *
      * @psalm-suppress ImpureMethodCall we know that {@see InstalledVersions} interaction does not
      *                                  cause any side effects here.
+     *
+     * @psalm-return key-of<self::VERSIONS>
      */
     public static function rootPackageName() : string
     {
@@ -1055,6 +1061,8 @@ final class Versions
      *
      * @psalm-suppress ImpureMethodCall we know that {@see InstalledVersions} interaction does not
      *                                  cause any side effects here.
+     *
+     * @psalm-return key-of<self::VERSIONS>
      */
     public static function rootPackageName() : string
     {
