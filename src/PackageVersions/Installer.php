@@ -101,8 +101,14 @@ class_exists(InstalledVersions::class);
     public static function getVersion(string $packageName): string
     {
         if (class_exists(InstalledVersions::class, false) && (method_exists(InstalledVersions::class, 'getAllRawData') ? InstalledVersions::getAllRawData() : InstalledVersions::getRawData())) {
-            return InstalledVersions::getPrettyVersion($packageName)
-                . '@' . InstalledVersions::getReference($packageName);
+            try {
+                return InstalledVersions::getPrettyVersion($packageName)
+                    . '@' . InstalledVersions::getReference($packageName);
+            }
+            catch (OutOfBoundsException $e) {
+                // Do nothing, allow fallback to version data stored within this class
+                // Where version data does not exist an OutOfBoundsException will still be thrown
+            }
         }
 
         if (isset(self::VERSIONS[$packageName])) {
