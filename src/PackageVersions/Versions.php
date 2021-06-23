@@ -65,7 +65,14 @@ final class Versions
             return $rootPackage['pretty_version'] . '@' . $rootPackage['reference'];
         }
 
-        return InstalledVersions::getPrettyVersion($packageName)
-            . '@' . InstalledVersions::getReference($packageName);
+        try {
+            return InstalledVersions::getPrettyVersion($packageName)
+              . '@' . InstalledVersions::getReference($packageName);
+        }
+        catch(OutOfBoundsException $e) {
+            // Fallback to FallbackVersions.
+            // Still throws OutOfBoundsException if package not found
+            return FallbackVersions::getVersion($packageName);
+        }
     }
 }
